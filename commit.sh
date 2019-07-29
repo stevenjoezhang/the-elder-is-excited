@@ -1,3 +1,5 @@
+cd "$(dirname "$0")"
+
 begin=$(expr $(cat ./begin) + 86400) # init: 972576000
 end=$(date '+%s')
 
