@@ -1,0 +1,21 @@
+name: +1s
+
+on:
+  schedule:
+    - cron: '17 8 * * *'
+
+jobs:
+  excited:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Config
+        run: |
+          git config --global user.name 'Mimi'
+          git config --global user.email 'stevenjoezhang@users.noreply.github.com'
+      - name: Commit
+        run: sh commit.sh
+      - name: Push
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push
